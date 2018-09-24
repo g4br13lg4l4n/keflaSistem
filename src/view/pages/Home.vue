@@ -19,3 +19,13 @@ import Head from '../components/Head'
     components: {MenuRight, Head}
   }
 </script>
+
+<style>
+  .app-body {
+    height: 100%;
+  }
+  main.main {
+    height: 100%;
+    padding-left: 260px;
+  }
+</style>
