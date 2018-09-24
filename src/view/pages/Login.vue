@@ -6,7 +6,7 @@
         <form>
           <div class="form-group"> 
             <label for="user">User</label>
-            <input type="text" v-model="user.email" :class="{ 'has-error': errors.hasError }" name="user">
+            <input type="email" v-model="user.email" :class="{ 'has-error': errors.hasError }" name="user">
             <transition name="slide-fade">  
               <p v-if="errors.userError" class="error-text">Usuario incorrecto</p>
             </transition>
@@ -58,7 +58,14 @@
         this.errors.hasError = true
       },
       login () {
-        this.$router.push({ name:'Home' })
+        
+        axios.post('http://localhost:8001/api/v1/kefla/login', this.user)
+          .then(resp => {
+            this.$router.push({ name:'Home' })
+          })
+          .catch(err => {
+            this.errorUser()
+          })
       },
     }
   }
@@ -117,7 +124,7 @@
     font-weight: 100;
     display: block;
   }
-  .form-group input[type="text"], .form-group input[type="password"]{
+  .form-group input[type="email"], .form-group input[type="text"], .form-group input[type="password"]{
     height: 26px;
     background: transparent;
     border: 0;
