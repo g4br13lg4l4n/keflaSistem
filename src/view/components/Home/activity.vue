@@ -15,6 +15,7 @@
             <th>Locación</th>
             <th>Cantidad</th>
             <th>Estatus</th>
+            <th>Opciones</th>
           </tr>
         </thead>
 
@@ -28,6 +29,7 @@
             <th>Locación</th>
             <th>Cantidad</th>
             <th>Estatus</th>
+            <th>Opciones</th>
           </tr>
         </tfoot>
 
@@ -41,6 +43,7 @@
             <td>Villahermosa Tabasco</td>
             <td>{{activity.quantity}}</td>
             <td>{{activity.status}}</td>
+            <td><button @click="Delete(activity._id)"> Eliminar </button> </td>
           </tr>
         </tbody>  
       </table>
@@ -57,13 +60,29 @@
       }
     },
     created () {
-      this.API_URL = `${window.Params.URL_API}/api/v1/orders/activities`
+      this.API_URL = window.Params.URL_API
     },
     mounted () {
-      axios.get(this.API_URL)
+      axios.get(this.API_URL+'/api/v1/orders/activities')
       .then(resp => {
         this.activities = resp.data.data.result
       })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    methods:  {
+      Delete(id) {
+        if(window.confirm("¿Desea eliminar este pedido?")){
+          axios.delete(this.API_URL+'/api/v1/order/', { _id: id })
+          .then( resp => {
+            console.log(resp)
+          })
+          .catch( err => {
+            console.log(err)
+          }) 
+        } 
+      }
     },
     filters: {
       data: (value) => {
