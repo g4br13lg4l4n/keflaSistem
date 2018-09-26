@@ -34,7 +34,7 @@
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="activity in activities" :key="activity.id">
+          <tr v-for="activity, index in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
             <td>{{activity.product[0].name}}</td>
@@ -43,7 +43,7 @@
             <td>Villahermosa Tabasco</td>
             <td>{{activity.quantity}}</td>
             <td>{{activity.status}}</td>
-            <td><button @click="Delete(activity._id)"> Eliminar </button> </td>
+            <td><button @click="Delete(activity._id, index)"> Eliminar </button> </td>
           </tr>
         </tbody>  
       </table>
@@ -72,12 +72,11 @@
       })
     },
     methods:  {
-      Delete(id) {
+      Delete(id, index) {
         if(window.confirm("¿Desea eliminar este pedido?")){
           axios.delete(this.API_URL+'/api/v1/order/', { _id: id })
           .then( resp => {
-            console.log(resp)
-            this.activities.splice(1)
+            this.$delete(this.activities, index)
           })
           .catch( err => {
             console.log(err)
