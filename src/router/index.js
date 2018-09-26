@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Login = require('../view/pages/Login.vue')
-const Home = require('../view/pages/Home.vue')
+import Login from '../view/pages/Login.vue'
+import Home from '../view/pages/Home.vue'
 
-const Activity = require('../view/components/Home/Activity.vue')
-const Customers = require('../view/components/Home/Customers.vue')
-const Sellers = require('../view/components/Home/Sellers.vue')
-const Companies = require('../view/components/Home/Companies.vue')
-const Settings = require('../view/components/Home/Settings.vue')
-const Travels = require('../view/components/Home/Travels.vue')
-const Billings = require('../view/components/Home/Billings.vue')
-const Mailbox = require('../view/components/Home/Mailbox.vue')
+import Activity from '../view/components/Home/activity.vue'
+import Customers from '../view/components/Home/customers.vue'
+import Sellers from '../view/components/Home/sellers.vue'
+import Companies from '../view/components/Home/companies.vue'
+import Settings from '../view/components/Home/settings.vue'
+import Travels from '../view/components/Home/travels.vue'
+import Billings from '../view/components/Home/billings.vue'
+import Mailbox from '../view/components/Home/mailbox.vue'
 
 Vue.use(Router)
 

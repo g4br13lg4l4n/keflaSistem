@@ -12,8 +12,8 @@
 
 <script>
 
-import MenuRight from '../components/menuRight'
-import Head from '../components/Head'
+import MenuRight from '../components/menuRight.vue'
+import Head from '../components/head.vue'
   export default {
     name: 'Home',
     components: {MenuRight, Head}
