@@ -8,7 +8,7 @@ const cors = require('cors')
 const server = require('http').Server(app)
 
 //settings
-app.set('port', process.env.PORT || 8005) // configuramos el puerto donde correrá
+app.set('port', process.env.PORT || 8002) // configuramos el puerto donde correrá
 
 //middleware 
 app.use(cors())
