@@ -11,7 +11,7 @@ window.axios = Axios
 
 let site = null 
 if (isLocal) { site = 'http://localhost:8001' }
-  else { site = 'http://178.128.70.168:8001/' }
+  else { site = 'http://178.128.70.168:8001' }
 
 window.Params = {
   URL_API: site
