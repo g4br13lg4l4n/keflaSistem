@@ -34,7 +34,7 @@
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="activity, index in activities" :key="activity.id">
+          <tr v-for="(activity, index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
             <td>{{activity.product[0].name}}</td>
