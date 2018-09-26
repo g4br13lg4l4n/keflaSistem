@@ -1,7 +1,7 @@
 <template>
   <div class="container-activity">
     <div class="head-container">
-      <h2>Actividad</h2>
+      <h2>Actividad ()</h2>
     </div>
     <div class="body-container">
       <table>
