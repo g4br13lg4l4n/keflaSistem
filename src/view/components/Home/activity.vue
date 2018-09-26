@@ -77,6 +77,7 @@
           axios.delete(this.API_URL+'/api/v1/order/', { _id: id })
           .then( resp => {
             console.log(resp)
+            this.activities.splice(1)
           })
           .catch( err => {
             console.log(err)
