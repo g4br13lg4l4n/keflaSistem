@@ -25,7 +25,8 @@ import Head from '../components/Head'
     height: 100%;
   }
   main.main {
-    height: 100%;
+    height: calc(100% - 50px) ;
     padding-left: 260px;
+    overflow-y: scroll;
   }
 </style>

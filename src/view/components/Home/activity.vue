@@ -9,10 +9,11 @@
           <tr>
             <th>Fecha</th>
             <th>Hora</th>
+            <th>Producto</th>
             <th>Vendedores</th>
             <th>Locación</th>
-            <th>Status de servicio</th>
             <th>Cantidad</th>
+            <th>Estatus</th>
           </tr>
         </thead>
 
@@ -20,25 +21,27 @@
           <tr>
             <th>Fecha</th>
             <th>Hora</th>
+            <th>Producto</th>
             <th>Vendedores</th>
             <th>Locación</th>
-            <th>Status de servicio</th>
             <th>Cantidad</th>
+            <th>Estatus</th>
           </tr>
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
           <tr v-for="activity in activities" :key="activity.id">
-            <td>{{activity.created}}</td>
-            <td>{{activity.created}}</td>
-            <td>{{activity.created}}</td>
-            <td>{{activity.created}}</td>
-            <td>{{activity.created}}</td>
+            <td>{{ activity.created | data}}</td>
+            <td>{{activity.created | hour}}</td>
+            <td>{{activity.product[0]}}</td>
+            <td>{{activity.seller[0]}}</td>
+            <td>Villahermosa Tabasco</td>
+            <td>{{activity.quantity}}</td>
+            <td>{{activity.status}}</td>
           </tr>
         </tbody>  
       </table>
     </div> 
-    {{this.activities}} 
   </div>
 </template>
 <script>
@@ -46,22 +49,51 @@
     name: 'Activity',
     data() {
       return {
-       API_URL : null,
-       activities: null
+        API_URL : null,
+        activities: null
       }
     },
-    created: () => {
+    created () {
       this.API_URL = `${window.Params.URL_API}/api/v1/orders`
     },
-    mounted: () => {
+    mounted () {
       axios.get(this.API_URL)
       .then(resp => {
         this.activities = resp.data.data.result
-        console.log(this.activities)
       })
+    },
+    filters: {
+      data: (value) => {
+        if (!value) return ''
+        const data = new Date(value)
+        const year = data.getFullYear()
+        const getMonth = data.getMonth()
+        const getDate = data.getDate()
+        return `${getDate}/${getMonth}/${year}`
+      },
+      hour: (value) => {
+        if(!value) return '' 
+        const data = new Date(value)
+        const hours = data.getHours()
+        const minutes = data.getMinutes()
+        return `${hours}:${minutes}`
+        }
     }
   }
 </script>
 <style>
-
+  .head-container h2 {
+    font-family: 'Arial';
+    font-size: 2em;
+    padding: 10px 0 20px 20px;
+  }
+  table {
+    width: 100%;
+    text-align: center;
+    font-family: 'Helvetica';
+  }
+  table thead tr{
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+  }
 </style>

@@ -58,8 +58,7 @@
         this.errors.hasError = true
       },
       login () {
-        
-        axios.post('http://localhost:8001/api/v1/kefla/login', this.user)
+        axios.post(`${window.Params.URL_API}/api/v1/kefla/login`, this.user)
           .then(resp => {
             this.$router.push({ name:'Home' })
           })
