@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Login from '../view/pages/Login.vue'
-import Home from '../view/pages/Home.vue'
+import Login from '@/view/pages/Login.vue'
+import Home from '@/view/pages/Home.vue'
 
 import Activity from '@/view/components/Home/Activity.vue'
 import Customers from '@/view/components/Home/Customers.vue'
