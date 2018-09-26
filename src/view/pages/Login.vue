@@ -13,7 +13,7 @@
           </div>
           <div class="form-group">
             <label for="password">Contraseña</label>
-            <input v-model="user.password" :class="{ 'has-error': errors.hasError }" type="password">
+            <input v-model="user.password" :class="{ 'has-error': errors.hasError }" type="password" name="password">
             <transition name="slide-fade">  
               <p v-if="errors.userError" class="error-text">Contraseña incorrecta</p>
             </transition>

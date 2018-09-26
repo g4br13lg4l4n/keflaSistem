@@ -7,10 +7,14 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "server": "pm2 start server.js --name ksistem",
+    "build": "node build/build.js server"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

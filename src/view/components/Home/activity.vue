@@ -10,6 +10,7 @@
             <th>Fecha</th>
             <th>Hora</th>
             <th>Producto</th>
+            <th>Precio</th>
             <th>Vendedores</th>
             <th>Locación</th>
             <th>Cantidad</th>
@@ -22,6 +23,7 @@
             <th>Fecha</th>
             <th>Hora</th>
             <th>Producto</th>
+            <th>Precio</th>
             <th>Vendedores</th>
             <th>Locación</th>
             <th>Cantidad</th>
@@ -33,8 +35,9 @@
           <tr v-for="activity in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-            <td>{{activity.product[0]}}</td>
-            <td>{{activity.seller[0]}}</td>
+            <td>{{activity.product[0].name}}</td>
+            <td>{{activity.product[0].price}}</td>
+            <td>{{activity.seller[0].name}}</td>
             <td>Villahermosa Tabasco</td>
             <td>{{activity.quantity}}</td>
             <td>{{activity.status}}</td>
@@ -54,7 +57,7 @@
       }
     },
     created () {
-      this.API_URL = `${window.Params.URL_API}/api/v1/orders`
+      this.API_URL = `${window.Params.URL_API}/api/v1/orders/activities`
     },
     mounted () {
       axios.get(this.API_URL)
@@ -91,9 +94,9 @@
     width: 100%;
     text-align: center;
     font-family: 'Helvetica';
+    border-spacing: 10px 10px;
   }
   table thead tr{
-    margin-bottom: 20px;
     border: 1px solid #cccccc;
   }
 </style>
