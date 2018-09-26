@@ -4,14 +4,14 @@ import Router from 'vue-router'
 import Login from '../view/pages/Login.vue'
 import Home from '../view/pages/Home.vue'
 
-import Activity from '../view/components/Home/Activity'
-import Customers from '../view/components/Home/Customers'
-import Sellers from '../view/components/Home/Sellers'
-import Companies from '../view/components/Home/Companies'
-import Settings from '../view/components/Home/Settings'
-import Travels from '../view/components/Home/Travels'
-import Billings from '../view/components/Home/Billings'
-import Mailbox from '../view/components/Home/Mailbox'
+import Activity from '../view/components/Home/Activity.vue'
+import Customers from '../view/components/Home/Customers.vue'
+import Sellers from '../view/components/Home/Sellers.vue'
+import Companies from '../view/components/Home/Companies.vue'
+import Settings from '../view/components/Home/Settings.vue'
+import Travels from '../view/components/Home/Travels.vue'
+import Billings from '../view/components/Home/Billings.vue'
+import Mailbox from '../view/components/Home/Mailbox.vue'
 
 Vue.use(Router)
 
