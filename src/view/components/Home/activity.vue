@@ -12,7 +12,9 @@
             <th>Producto</th>
             <th>Precio</th>
             <th>Vendedores</th>
-            <th>Locación</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Distance</th>
             <th>Cantidad</th>
             <th>Estatus</th>
             <th>Opciones</th>
@@ -26,7 +28,9 @@
             <th>Producto</th>
             <th>Precio</th>
             <th>Vendedores</th>
-            <th>Locación</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Distance</th>
             <th>Cantidad</th>
             <th>Estatus</th>
             <th>Opciones</th>
@@ -37,10 +41,12 @@
           <tr v-for="(activity, index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-            <td>{{activity.product[0].name || '' }}</td>
-            <td>{{activity.product[0].price || ''}}</td>
-            <td>{{activity.seller[0].name || ''}}</td>
-            <td>Villahermosa Tabasco</td>
+            <td v-if="activity.product[0].name != undefined">  {{activity.product[0].name}}</td>
+            <td v-if="activity.product[0].price != undefined">{{activity.product[0].price}}</td>
+            <td v-if="activity.product[0].name != undefined">{{activity.seller[0].name}}</td>
+            <td>{{ activity.origin }}</td>
+            <td>{{ activity.destination }}</td>
+            <td>{{ activity.distance }}</td>
             <td>{{activity.quantity}}</td>
             <td>{{activity.status}}</td>
             <td><button @click="Delete(activity._id, index)"> Eliminar </button> </td>
