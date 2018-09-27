@@ -43,7 +43,7 @@
             <td>{{activity.created | hour}}</td>
         <!--    <td v-if="activity.product[0].name != undefined">  {{activity.product[0].name}}</td>
             <td v-if="activity.product[0].price != undefined">{{activity.product[0].price}}</td>  -->
-            <td v-if="activity.product[0].name != undefined">{{activity.seller[0].name}}</td>
+            <td v-if="activity.seller[0].name != undefined">{{activity.seller[0].name}}</td>
             <td>{{ activity.origin }}</td>
             <td>{{ activity.destination }}</td>
             <td>{{ activity.distance }}</td>
