@@ -41,8 +41,8 @@
           <tr v-for="(activity, index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-            <td v-if="activity.product[0].name != undefined">  {{activity.product[0].name}}</td>
-            <td v-if="activity.product[0].price != undefined">{{activity.product[0].price}}</td>
+        <!--    <td v-if="activity.product[0].name != undefined">  {{activity.product[0].name}}</td>
+            <td v-if="activity.product[0].price != undefined">{{activity.product[0].price}}</td>  -->
             <td v-if="activity.product[0].name != undefined">{{activity.seller[0].name}}</td>
             <td>{{ activity.origin }}</td>
             <td>{{ activity.destination }}</td>
