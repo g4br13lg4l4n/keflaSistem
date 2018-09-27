@@ -41,8 +41,8 @@
           <tr v-for="(activity , index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-            <td v-if="activity.product == []">Sin datos</td><td v-else> {{activity.product[0].name }} </td>
-            <td v-if="activity.product == []">Sin datos</td><td v-else> {{activity.product[0].price }} </td>
+        <!--    <td>{{activity.product[0].name }}</td>
+            <td>{{activity.product[0].price }}</td>  -->
             <td>{{activity.seller[0].name}}</td>
             <td>{{ activity.origin }}</td>
             <td>{{ activity.destination }}</td>
