@@ -37,9 +37,9 @@
           <tr v-for="(activity, index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-            <td>{{activity.product[0].name}}</td>
-            <td>{{activity.product[0].price}}</td>
-            <td>{{activity.seller[0].name}}</td>
+            <td>{{activity.product[0].name || '' }}</td>
+            <td>{{activity.product[0].price || ''}}</td>
+            <td>{{activity.seller[0].name || ''}}</td>
             <td>Villahermosa Tabasco</td>
             <td>{{activity.quantity}}</td>
             <td>{{activity.status}}</td>
