@@ -92,7 +92,7 @@
     },
     filters: {
       clear: (value) => {
-        if(!value) return '' 
+        if(!value) return 'null' 
       },
       data: (value) => {
         if (!value) return ''
