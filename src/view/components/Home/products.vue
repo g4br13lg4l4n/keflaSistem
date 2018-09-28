@@ -32,7 +32,7 @@
             <td>{{product.description}}</td>
             <td>{{product.isActive}}</td>
             <td>{{product.created | data}}</td>
-            <td><button @click="Delete(activity._id, index)"> Eliminar </button> </td>
+            <td><button @click="Delete(product._id, index)"> Eliminar </button> </td>
           </tr>
         </tbody>  
       </table>
@@ -65,7 +65,7 @@
         if(window.confirm("¿Desea eliminar este pedido?")){
           axios.delete(this.API_URL+'/api/v1/product', { _id: id })
           .then( resp => {
-            this.$delete(this.activities, index)
+            this.$delete(this.products, index)
           })
           .catch( err => {
             console.log(err)
