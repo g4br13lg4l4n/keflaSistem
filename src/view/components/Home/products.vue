@@ -1,60 +1,37 @@
 <template>
   <div class="container-activity">
     <div class="head-container">
-      <h2>Actividad</h2>
+      <h2>Productos</h2>
     </div>
     <div class="body-container">
       <table>
         <thead> <!-- Pasajeros del vuelo 377 -->
           <tr>
-            <th>Fecha</th>
-            <th>Hora</th>
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad (Kilos)</th>
-            <th>Venta $</th>
-            <th>Vendedores</th>
-            <th>Clientes</th>
-            <th>Origen</th>
-            <th>Destino</th>
-            <th>Distance</th> 
-            <th>Estatus</th>
-            <th>Opciones</th>
+            <th>Descripción</th>
+            <th>Active</th>
+            <th>Fecha</th>
           </tr>
         </thead>
 
         <tfoot> <!-- Pie de tabla -->
           <tr>
-            <th>Fecha</th>
-            <th>Hora</th>
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad (Kilos)</th>
-            <th>Venta $</th>
-            <th>Vendedores</th>
-            <th>Clientes</th>
-            <th>Origen</th>
-            <th>Destino</th>
-            <th>Distance</th> 
-            <th>Estatus</th>
-            <th>Opciones</th>
+            <th>Descripción</th>
+            <th>Active</th>
+            <th>Fecha</th>
           </tr>
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="(activity , index) in activities" :key="activity.id">
-            <td>{{ activity.created | data}}</td>
-            <td>{{activity.created | hour}}</td>
-            <td>{{activity.product[0].name }}</td>
-            <td>{{activity.product[0].price }}</td>
-            <td>{{activity.quantity}}</td>
-            <td>$ {{activity.product[0].price *  activity.quantity}}</td>  
-            <td>{{activity.seller[0].name}}</td>
-            <td>{{activity.custumer[0].name}}</td>
-            <td>{{ activity.origin }}</td>
-            <td>{{ activity.destination }}</td>
-            <td>{{ activity.distance }}</td>
-            <td>{{activity.status}}</td>
+          <tr v-for="(product , index) in products" :key="product.id">
+            <td>{{ product.name }}</td>
+            <td>{{product.price }}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.isActive}}</td>
+            <td>{{product.created | data}}</td>
             <td><button @click="Delete(activity._id, index)"> Eliminar </button> </td>
           </tr>
         </tbody>  
@@ -64,20 +41,20 @@
 </template>
 <script>
   export default {
-    name: 'Activity',
+    name: 'products',
     data() {
       return {
         API_URL : null,
-        activities: null
+        products: null
       }
     },
     created () {
       this.API_URL = window.Params.URL_API
     },
     mounted () {
-      axios.get(this.API_URL+'/api/v1/orders/activities')
+      axios.get(this.API_URL+'/api/v1/products')
       .then(resp => {
-        this.activities = resp.data.data.result
+        this.products = resp.data.data.result
       })
       .catch(err => {
         console.log(err)
@@ -86,7 +63,7 @@
     methods:  {
       Delete(id, index) {
         if(window.confirm("¿Desea eliminar este pedido?")){
-          axios.delete(this.API_URL+'/api/v1/order/', { _id: id })
+          axios.delete(this.API_URL+'/api/v1/product', { _id: id })
           .then( resp => {
             this.$delete(this.activities, index)
           })
@@ -131,3 +108,4 @@
     border: 1px solid #cccccc;
   }
 </style>
+

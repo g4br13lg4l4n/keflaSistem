@@ -8,6 +8,7 @@ import Activity from '../view/components/Home/activity.vue'
 import Customers from '../view/components/Home/customers.vue'
 import Sellers from '../view/components/Home/sellers.vue'
 import Companies from '../view/components/Home/companies.vue'
+import Products from '../view/components/Home/products.vue'
 import Settings from '../view/components/Home/settings.vue'
 import Travels from '../view/components/Home/travels.vue'
 import Billings from '../view/components/Home/billings.vue'
@@ -47,6 +48,11 @@ export default new Router({
           path: 'companies',
           name: 'Companies',
           component: Companies,
+        },
+        {
+          path: 'products',
+          name: 'Products',
+          component: Products
         },
         {
           path: 'settings',

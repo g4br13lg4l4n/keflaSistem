@@ -7,6 +7,7 @@
           <li><router-link :to="{ name: 'Activity' }">Actividad</router-link></li>
           <li><router-link :to="{ name: 'Customers' }">Compradores</router-link></li>
           <li><router-link :to="{ name: 'Sellers' }">Vendedores</router-link></li>
+          <li><router-link :to="{ name: 'Products' }">Productos</router-link></li>
           <li><router-link :to="{ name: 'Companies' }">Empresas</router-link></li>
           <li><router-link :to="{ name: 'Settings' }">Configuraciones</router-link></li>
         </ul>
