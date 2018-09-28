@@ -11,11 +11,13 @@
             <th>Hora</th>
             <th>Producto</th>
             <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Venta $</th>
             <th>Vendedores</th>
+            <th>Clientes</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th>Distance</th>
-            <th>Cantidad</th>
+            <th>Distance (Kilos)</th> 
             <th>Estatus</th>
             <th>Opciones</th>
           </tr>
@@ -27,11 +29,13 @@
             <th>Hora</th>
             <th>Producto</th>
             <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Venta $</th>
             <th>Vendedores</th>
+            <th>Clientes</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th>Distance</th>
-            <th>Cantidad</th>
+            <th>Distance (Kilos)</th> 
             <th>Estatus</th>
             <th>Opciones</th>
           </tr>
@@ -41,13 +45,15 @@
           <tr v-for="(activity , index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-        <!--    <td>{{activity.product[0].name }}</td>
-            <td>{{activity.product[0].price }}</td>  -->
+            <td>{{activity.product[0].name }}</td>
+            <td>{{activity.product[0].price }}</td>
+            <td>{{activity.quantity}}</td>
+            <td>$ {{activity.product[0].price *  activity.quantity}}</td>  
             <td>{{activity.seller[0].name}}</td>
+            <td>{{activity.custumer[0].name}}</td>
             <td>{{ activity.origin }}</td>
             <td>{{ activity.destination }}</td>
             <td>{{ activity.distance }}</td>
-            <td>{{activity.quantity}}</td>
             <td>{{activity.status}}</td>
             <td><button @click="Delete(activity._id, index)"> Eliminar </button> </td>
           </tr>
