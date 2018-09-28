@@ -29,7 +29,7 @@
 </script>
 <style>
   .menu-right {
-    width: 260px;
+    width: 230px;
     background-color: #1E1E29;
     height:  calc(100% - 50px);
     position: absolute;

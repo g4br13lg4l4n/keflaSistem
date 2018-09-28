@@ -26,7 +26,7 @@ import Head from '../components/head.vue'
   }
   main.main {
     height: calc(100% - 50px) ;
-    padding-left: 260px;
+    padding-left: 230px;
     overflow-y: scroll;
   }
 </style>
