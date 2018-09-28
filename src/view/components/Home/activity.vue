@@ -11,13 +11,13 @@
             <th>Hora</th>
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad</th>
+            <th>Cantidad (Kilos)</th>
             <th>Venta $</th>
             <th>Vendedores</th>
             <th>Clientes</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th>Distance (Kilos)</th> 
+            <th>Distance</th> 
             <th>Estatus</th>
             <th>Opciones</th>
           </tr>
@@ -29,13 +29,13 @@
             <th>Hora</th>
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad</th>
+            <th>Cantidad (Kilos)</th>
             <th>Venta $</th>
             <th>Vendedores</th>
             <th>Clientes</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th>Distance (Kilos)</th> 
+            <th>Distance</th> 
             <th>Estatus</th>
             <th>Opciones</th>
           </tr>
