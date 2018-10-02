@@ -2,10 +2,20 @@
   <div class="container-activity">
     <div class="head-container">
       <h2>Vendedores</h2>
+      <div class="options"> 
+
+        <button id="show-modal" @click="showModal = true">Agregar Vendedor</button>
+        <FormSeller v-if="showModal" @close="showModal = false" @test="callback">
+          <h3 slot="header">Agregar nuevo Vendedor</h3>
+        </FormSeller>
+        <form action="" >
+          <input type="text" name="v-vendedor" v-model="findSeller" id="b-vendedor" placeholder="Buscar Vendedor">
+        </form>
+      </div>
     </div>
     <div class="body-container">
       <table>
-        <thead> <!-- Pasajeros del vuelo 377 -->
+        <thead> 
           <tr>
             <th>Nombre</th>
             <th>Correo</th>
@@ -28,7 +38,7 @@
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="seller in sellers" :key="seller.id">
+          <tr v-for="seller in sellersFilter" :key="seller.id">
             <td>{{ seller.name }}</td>
             <td>{{ seller.email }}</td>
             <td>{{ seller.phone }}</td>
@@ -42,23 +52,49 @@
   </div>
 </template>
 <script>
+import FormSeller from '../Forms/form-seller.vue'
+
   export default {
     name: 'Sellers',
+    components: {FormSeller},
     data() {
       return {
+        showModal: false,
         API_URL : null,
-        sellers: null
+        sellers: null,
+        findSeller: ""
+      }
+    },
+    computed: {
+      sellersFilter() {
+        var findSeller = this.findSeller
+        if(findSeller === "") {
+          return this.sellers
+        } else {
+          return this.sellers.filter((seller) => {
+            let name = seller.name.toLowerCase().indexOf(this.findSeller.toLowerCase()) > -1
+            if(name){
+              return name
+            }else {
+              return seller.phone.toLowerCase().indexOf(this.findSeller.toLowerCase()) > -1
+            }
+          })
+        }
+      }
+    },
+    methods: {
+      callback(data){
+        this.sellers.push(data.result)
+        this.showModal = false
       }
     },
     created () {
       this.API_URL = `${window.Params.URL_API}/api/v1/sellers`
-      console.log(this.API_URL)
     },
     mounted () {
       axios.get(this.API_URL)
       .then(resp => {
         this.sellers = resp.data.data.result
-        console.log(this.sellers)
       })
     },
     filters: {
@@ -87,6 +123,18 @@
   }
 </script>
 <style>
+  .head-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items:center;
+  }
+  .options {
+    width: 70%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: space-between;
+  }
   .head-container h2 {
     font-family: 'Arial';
     font-size: 2em;
