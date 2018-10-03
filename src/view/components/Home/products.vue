@@ -26,26 +26,37 @@
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="(product , index) in products" :key="product.id">
+          <tr v-for="(product, index) in products" :key="product.id">
             <td>{{ product.name }}</td>
             <td>{{product.price }}</td>
             <td>{{product.description}}</td>
             <td>{{product.isActive}}</td>
             <td>{{product.created | data}}</td>
-            <td><button @click="Delete(product._id, index)"> Eliminar </button> </td>
+            <td>
+              <button @click="Delete(product._id, index)"> Eliminar </button>
+              <button @click="showModalEdit(product._id, index)"> Editar </button> 
+            </td>
           </tr>
         </tbody>  
       </table>
     </div> 
+    <EditProduct v-if="showModal" @close="showModal = false" :product="productProp">
+
+    </EditProduct>  
   </div>
 </template>
 <script>
+import EditProduct from '../Forms/edit-product.vue'
+
   export default {
     name: 'products',
+    components: {EditProduct},
     data() {
       return {
+        showModal: false,
         API_URL : null,
-        products: null
+        products: null,
+        productProp: null
       }
     },
     created () {
@@ -61,6 +72,13 @@
       })
     },
     methods:  {
+      showModalEdit(id, index) {
+        this.showModal = true
+        this.productProp = this.products[index] 
+      },
+      Edit(id, index) {
+
+      },
       Delete(id, index) {
         if(window.confirm("¿Desea eliminar este pedido?")){
           axios.delete(this.API_URL+'/api/v1/product', { _id: id })

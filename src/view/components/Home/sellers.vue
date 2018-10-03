@@ -23,6 +23,7 @@
             <th>Dirección</th>
             <th>Region</th>
             <th>Estatus</th>
+            <th>Opciones</th>
           </tr>
         </thead>
 
@@ -34,17 +35,19 @@
             <th>Dirección</th>
             <th>Region</th>
             <th>Estatus</th>
+            <th>Opciones</th>
           </tr>
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="seller in sellersFilter" :key="seller.id">
+          <tr v-for="(seller, index) in sellersFilter" :key="seller.id">
             <td>{{ seller.name }}</td>
             <td>{{ seller.email }}</td>
             <td>{{ seller.phone }}</td>
             <td>{{ seller.address }}</td>
             <th>{{ seller.region }}</th>
             <td>{{ seller.isActive | status }}</td>
+            <td> <button @click="Delete(seller._id, index)">Eliminar</button> </td>
           </tr>
         </tbody>  
       </table>
@@ -83,16 +86,28 @@ import FormSeller from '../Forms/form-seller.vue'
       }
     },
     methods: {
+      Delete(id, index) {
+        console.log(index)
+        if(window.confirm("¿Desea eliminar este Vendedor?")){
+          axios.delete(this.API_URL+'/api/v1/seller', { _id: id })
+          .then( resp => {
+            this.$delete(this.sellers, index)
+          })
+          .catch( err => {
+            console.log(err)
+          }) 
+        } 
+      },
       callback(data){
         this.sellers.push(data.result)
         this.showModal = false
       }
     },
     created () {
-      this.API_URL = `${window.Params.URL_API}/api/v1/sellers`
+      this.API_URL = window.Params.URL_API
     },
     mounted () {
-      axios.get(this.API_URL)
+      axios.get(this.API_URL+'/api/v1/sellers')
       .then(resp => {
         this.sellers = resp.data.data.result
       })
