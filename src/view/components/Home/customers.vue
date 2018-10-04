@@ -11,6 +11,7 @@
             <th>Correo</th>
             <th>Teléfono</th>
             <th>Estatus</th>
+            <th>Opciones</th>
           </tr>
         </thead>
 
@@ -20,15 +21,17 @@
             <th>Correo</th>
             <th>Teléfono</th>
             <th>Estatus</th>
+            <th>Opciones</th>
           </tr>
         </tfoot>
 
         <tbody> <!-- Cuerpo de la tabla -->
-          <tr v-for="customer in customers" :key="customer.id">
+          <tr v-for="(customer, index) in customers" :key="customer.id">
             <td>{{ customer.name }}</td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone }}</td>
             <td>{{ customer.isActive | status }}</td>
+            <td> <button @click="Delete(customer._id, index)"> Eliminar </button> </td>
           </tr>
         </tbody>  
       </table>
@@ -45,10 +48,23 @@
       }
     },
     created () {
-      this.API_URL = `${window.Params.URL_API}/api/v1/customers`
+      this.API_URL = window.Params.URL_API
+    },
+    methods: {
+      Delete(id, index) {
+        if(window.confirm("¿Desea eliminar este Comprador?")){
+          axios.delete(this.API_URL+'/api/v1/customer', { _id: id })
+          .then( resp => {
+            this.$delete(this.customers, index)
+          })
+          .catch( err => {
+            console.log(err)
+          }) 
+        } 
+      },
     },
     mounted () {
-      axios.get(this.API_URL)
+      axios.get(this.API_URL+'/api/v1/customers')
       .then(resp => {
         this.customers = resp.data.data.result
       })
