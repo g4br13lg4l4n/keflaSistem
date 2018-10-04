@@ -87,8 +87,8 @@ import FormSeller from '../Forms/form-seller.vue'
     },
     methods: {
       Delete(id, index) {
-        if(window.confirm("¿Desea eliminar este Vendedor?")){
-          axios.delete(this.API_URL+'/api/v1/seller', { _id: id })
+        if(window.confirm("¿Desea eliminar este Vendedor?")){          
+          axios.delete(this.API_URL+'/api/v1/seller', { data: { _id: id } })
           .then( resp => {
             this.$delete(this.sellers, index)
           })

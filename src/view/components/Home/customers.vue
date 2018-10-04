@@ -53,7 +53,7 @@
     methods: {
       Delete(id, index) {
         if(window.confirm("¿Desea eliminar este Comprador?")){
-          axios.delete(this.API_URL+'/api/v1/customer', { _id: id })
+          axios.delete(this.API_URL+'/api/v1/customer', { data: { _id: id } })
           .then( resp => {
             this.$delete(this.customers, index)
           })
