@@ -45,12 +45,12 @@
           <tr v-for="(activity , index) in activities" :key="activity.id">
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
-            <td>{{activity.product[0].name }}</td>
-            <td>{{activity.product[0].price }}</td>
+            <td v-if="activity.product != null">{{activity.product[0].name }}</td><td v-else> Sin dato </td> 
+            <td v-if="activity.product != null">{{activity.product[0].price }}</td><td v-else> Sin dato </td> 
             <td>{{activity.quantity}}</td>
             <td>$ {{activity.product[0].price *  activity.quantity}}</td>  
-            <td>{{activity.seller[0].name}}</td>
-            <td>{{activity.custumer[0].name}}</td>
+            <td v-if="activity.seller != null">{{activity.seller[0].name}}</td><td v-else> Sin dato </td> 
+            <td v-if="activity.custumer != null">{{activity.custumer[0].name}}</td><td v-else> Sin dato </td> 
             <td>{{ activity.origin }}</td>
             <td>{{ activity.destination }}</td>
             <td>{{ activity.distance }}</td>
