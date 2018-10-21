@@ -17,6 +17,7 @@
       <table>
         <thead> 
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>
@@ -29,6 +30,7 @@
 
         <tfoot> <!-- Pie de tabla -->
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>
@@ -41,6 +43,7 @@
 
         <tbody> <!-- Cuerpo de la tabla -->
           <tr v-for="(seller, index) in sellersFilter" :key="seller.id">
+            <td>{{ seller._id }}</td>
             <td>{{ seller.name }}</td>
             <td>{{ seller.email }}</td>
             <td>{{ seller.phone }}</td>

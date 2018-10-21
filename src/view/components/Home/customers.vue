@@ -7,6 +7,7 @@
       <table>
         <thead> <!-- Pasajeros del vuelo 377 -->
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>
@@ -17,6 +18,7 @@
 
         <tfoot> <!-- Pie de tabla -->
           <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>
@@ -27,6 +29,7 @@
 
         <tbody> <!-- Cuerpo de la tabla -->
           <tr v-for="(customer, index) in customers" :key="customer.id">
+            <td>{{ customer._id }}</td>
             <td>{{ customer.name }}</td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.phone }}</td>

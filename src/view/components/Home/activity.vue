@@ -7,6 +7,7 @@
       <table>
         <thead> <!-- Pasajeros del vuelo 377 -->
           <tr>
+            <th>ID</th>
             <th>Fecha</th>
             <th>Hora</th>
             <th>Producto</th>
@@ -25,6 +26,7 @@
 
         <tfoot> <!-- Pie de tabla -->
           <tr>
+            <th>ID</th>
             <th>Fecha</th>
             <th>Hora</th>
             <th>Producto</th>
@@ -43,6 +45,7 @@
 
         <tbody> <!-- Cuerpo de la tabla -->
           <tr v-for="(activity , index) in activities" :key="activity.id">
+            <td>{{ activity._id }}</td>
             <td>{{ activity.created | data}}</td>
             <td>{{activity.created | hour}}</td>
             <td v-if="activity.product != null">{{activity.product[0].name }}</td><td v-else> Sin dato </td> 

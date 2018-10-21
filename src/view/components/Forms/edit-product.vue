@@ -37,24 +37,35 @@
     props:['product'],
     data() {
       return {
-        productEdit: this.product,
-        API_URL: null
+        productEdit: {...this.product},
+        product2: this.product,
+        update: false,
+        API_URL: null,
       }
     },
     created () {
       this.API_URL = window.Params.URL_API
     },
+    computed: {
+      checkDataUpdate: function () {
+        let productFrom = this.product2
+        for (const prop in this.productEdit) {
+          productFrom[prop] = this.productEdit[prop]
+        }
+        return productFrom
+      }
+    },
     methods: {
       save () {
         axios.put(this.API_URL+'/api/v1/product', this.productEdit)
         .then(resp => {
-          if(resp.data.data.result.ok = 1){
+          if(resp.data.data.result.ok = 1) {
+            this.checkDataUpdate      
             this.$emit('close')
           }
         })
         .catch(err => {
-          this.productEdit = this.product
-          console.log('error al guardar')
+          console.log('error al guardar', err)
         })
       }
     }

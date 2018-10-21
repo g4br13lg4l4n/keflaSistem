@@ -7,6 +7,7 @@
       <table>
         <thead> <!-- Pasajeros del vuelo 377 -->
           <tr>
+            <th>ID</th>
             <th>Producto</th>
             <th>Precio</th>
             <th>Descripción</th>
@@ -17,6 +18,7 @@
 
         <tfoot> <!-- Pie de tabla -->
           <tr>
+            <th>ID</th>
             <th>Producto</th>
             <th>Precio</th>
             <th>Descripción</th>
@@ -27,6 +29,7 @@
 
         <tbody> <!-- Cuerpo de la tabla -->
           <tr v-for="(product, index) in products" :key="product.id">
+            <td>{{ product._id }}</td>
             <td>{{ product.name }}</td>
             <td>{{product.price }}</td>
             <td>{{product.description}}</td>
@@ -41,7 +44,6 @@
       </table>
     </div> 
     <EditProduct v-if="showModal" @close="showModal = false" :product="productProp">
-
     </EditProduct>  
   </div>
 </template>
@@ -75,9 +77,6 @@ import EditProduct from '../Forms/edit-product.vue'
       showModalEdit(id, index) {
         this.showModal = true
         this.productProp = this.products[index] 
-      },
-      Edit(id, index) {
-
       },
       Delete(id, index) {
         if(window.confirm("¿Desea eliminar este pedido?")){
